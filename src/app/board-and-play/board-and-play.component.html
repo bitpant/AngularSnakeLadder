@@ -1,0 +1,63 @@
+<a class="btn btn-info" routerLink="/board"  (click)="loadGame()">Load/Reset Board</a> 
+
+<h3>Players playing this Game</h3>
+<table>
+   <tbody>
+     <tr *ngFor="let player of boardlayout.players">
+       <td><a class="btn btn-info"
+         routerLink="/board"  (click)="playMove(player.playerId)">
+         {{player.playerName}} Play 
+         </a></td>
+     </tr>
+   </tbody>
+</table>
+
+<br>
+<div class="move-loc" *ngIf="movedetail">
+   <h3>Move Details</h3>
+   <h4>Player Id: {{ movedetail.playerId }} </h4>
+   <h4>Player Position: {{ movedetail.position }} </h4>
+   <h4>Move Details: {{ movedetail.moveDetail }} </h4>
+</div>
+<br>
+<br>
+<div class="board-placement" *ngIf="boardlayout">
+   <h3>Board Details</h3>
+   <h4>Board Size: {{boardlayout.size}} </h4>
+   <h4>Snake locations:</h4>
+   <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Start Position</th>
+          <th scope="col">End Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let snake of boardlayout.snakes">
+          <td>{{ snake.snakeId}}</td>
+          <td>{{ snake.startPosition }}</td>
+          <td>{{ snake.endPosition }}</td>
+        </tr>
+      </tbody>
+   </table>
+   <h4>Ladder locations:</h4>
+   <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Start Position</th>
+          <th scope="col">End Position</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ladders of boardlayout.ladders">
+          <td>{{ ladders.ladderId}}</td>
+          <td>{{ ladders.startPosition }}</td>
+          <td>{{ ladders.endPosition }}</td>
+        </tr>
+      </tbody>
+   </table>
+</div>
+
+
